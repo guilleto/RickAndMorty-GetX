@@ -59,50 +59,50 @@ class CharacterInfoPage extends StatelessWidget {
               ),
               const Divider(),
 
-                _infoRow(
-                    Icons.person,
-                    "Género",
-                    TranslationUtils.translate(
-                        TranslationTypes.gender, character.gender)),
-                _infoRow(
-                    Icons.category,
-                    "Especie",
-                    TranslationUtils.translate(
-                        TranslationTypes.species, character.species)),
-                _infoRow(
-                    Icons.location_on, "Ubicación", character.location['name']),
-                if (character.origin['name'].isNotEmpty)
-                  _infoRow(Icons.public, "Origen", character.origin['name']),
+              _infoRow(
+                  Icons.person,
+                  "Género",
+                  TranslationUtils.translate(
+                      TranslationTypes.gender, character.gender)),
+              _infoRow(
+                  Icons.category,
+                  "Especie",
+                  TranslationUtils.translate(
+                      TranslationTypes.species, character.species)),
+              _infoRow(
+                  Icons.location_on, "Ubicación", character.location['name']),
+              if (character.origin['name'].isNotEmpty)
+                _infoRow(Icons.public, "Origen", character.origin['name']),
 
-                // Botón para abrir el primer episodio
-                const SizedBox(height: 16),
-                if (character.episode!.isNotEmpty)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Primer episodio:",
-                          style: const TextStyle(fontWeight: FontWeight.bold)),
-                      const SizedBox(width: 8),
-                      ElevatedButton.icon(
-                        onPressed: () => {},
-                        icon: const Icon(Icons.play_circle_filled),
-                        label: Text('${character.episode?.first}'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                          foregroundColor: Colors.lightBlueAccent,
-                          side: const BorderSide(color: Colors.lightBlueAccent),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
+              // Botón para abrir el primer episodio
+              const SizedBox(height: 16),
+              if (character.episode!.isNotEmpty)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Primer episodio:",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    const SizedBox(width: 8),
+                    ElevatedButton.icon(
+                      onPressed: () => {},
+                      icon: const Icon(Icons.play_circle_filled),
+                      label: Text('${character.episode?.first}'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        foregroundColor: Colors.lightBlueAccent,
+                        side: const BorderSide(color: Colors.lightBlueAccent),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
                       ),
-                    ],
-                  ),
-              ],
-            ),
+                    ),
+                  ],
+                ),
+            ],
           ),
         ),
-      );
+      ),
+    );
   }
 
   /// Widget para mostrar una fila de información con ícono y texto

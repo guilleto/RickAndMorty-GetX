@@ -13,9 +13,9 @@ class AppRoutes {
     GetPage(name: welcome, page: () => WelcomePage()),
     GetPage(
       name: characterList,
-      page: () => CharacterListPage(),
+      page: () => const CharacterListPage(),
       binding: CharacterBinding(),
     ),
-    GetPage(name: characterInfo, page: () => CharacterInfoPage()),
+    GetPage(name: characterInfo, page: () => const CharacterInfoPage()),
   ];
 }

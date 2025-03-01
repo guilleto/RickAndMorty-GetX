@@ -6,7 +6,8 @@ class AppTheme {
     brightness: Brightness.light,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: const TextTheme(
-      displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
+      displayLarge: TextStyle(
+          fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
       bodyLarge: TextStyle(fontSize: 16, color: Colors.black87),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -23,8 +24,9 @@ class AppTheme {
     primarySwatch: Colors.blue,
     brightness: Brightness.dark,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    textTheme:const TextTheme(
-      displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(
+          fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
       bodyLarge: TextStyle(fontSize: 16, color: Colors.white70),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

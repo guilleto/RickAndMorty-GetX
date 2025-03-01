@@ -5,8 +5,11 @@ import 'package:rick_morty_getx/domain/entities/translation_types.dart';
 import '../controllers/character_list_controller.dart';
 import '../widgets/character_card.dart';
 import '../widgets/filter_dropdown.dart';
+import '../widgets/theme_switch.dart';
 
 class CharacterListPage extends StatelessWidget {
+  const CharacterListPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CharacterController>();
@@ -80,49 +83,58 @@ class CharacterListPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Obx(() {
-        if (controller.isLoading.value) {
-          return const Center(child: CircularProgressIndicator());
-        }
-
-        return NotificationListener<ScrollNotification>(
-          onNotification: (ScrollNotification scrollInfo) {
-            if (scrollInfo.metrics.pixels ==
-                scrollInfo.metrics.maxScrollExtent) {
-              controller.fetchCharacters(isNextPage: true);
+      body: Stack(
+        children: [
+          Obx(() {
+            if (controller.isLoading.value) {
+              return const Center(child: CircularProgressIndicator());
             }
-            return true;
-          },
-          child: GridView.builder(
-            padding: const EdgeInsets.all(10),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: controller.hasError.value ? 1 : 2, // 2 personajes por fila
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 0.7,
-            ),
-            itemCount: controller.hasError.value ? 1 : controller.characters.length +
-                (controller.hasNextPage.value ? 1 : 0),
-            itemBuilder: (context, index) {
-              if (controller.hasError.value) {
-                return const Center(
-                    child: Column(
-                  children: [
-                    Icon(Icons.no_accounts),
-                    SizedBox(height: 10),
-                    Text("No se encontraron Personajes"),
-                  ],
-                ));
-              }else
-              if (index == controller.characters.length) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              final character = controller.characters[index];
-              return CharacterCard(character: character);
-            },
-          ),
-        );
-      }),
+          
+            return NotificationListener<ScrollNotification>(
+              onNotification: (ScrollNotification scrollInfo) {
+                if (scrollInfo.metrics.pixels ==
+                    scrollInfo.metrics.maxScrollExtent) {
+                  controller.fetchCharacters(isNextPage: true);
+                }
+                return true;
+              },
+              child: GridView.builder(
+                padding: const EdgeInsets.all(10),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:
+                      controller.hasError.value ? 1 : 2, // 2 personajes por fila
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.7,
+                ),
+                itemCount: controller.hasError.value
+                    ? 1
+                    : controller.characters.length +
+                        (controller.hasNextPage.value ? 1 : 0),
+                itemBuilder: (context, index) {
+                  if (controller.hasError.value) {
+                    return const Center(
+                        child: Column(
+                      children: [
+                        Icon(Icons.no_accounts),
+                        SizedBox(height: 10),
+                        Text("No se encontraron Personajes"),
+                      ],
+                    ));
+                  } else if (index == controller.characters.length) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  final character = controller.characters[index];
+                  return CharacterCard(character: character);
+                },
+              ),
+            );
+          }),
+          const ThemeSwitch(),
+        ],
+      ),
     );
   }
 }
+
+
