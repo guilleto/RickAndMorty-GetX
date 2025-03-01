@@ -16,6 +16,6 @@ class AppRoutes {
       page: () => CharacterListPage(),
       binding: CharacterBinding(),
     ),
-    GetPage(name: characterInfo, page: () => const CharacterInfoPage()),
+    GetPage(name: characterInfo, page: () => CharacterInfoPage()),
   ];
 }

@@ -5,19 +5,28 @@ class CharacterModel extends Character {
     required super.id,
     required super.name,
     required super.status,
+    required super.species,
     required super.image,
     required super.gender,
     required super.location,
-    super.species
+    required super.origin,
+    super.episode,
   });
 
   factory CharacterModel.fromJson(Map<String, dynamic> json) {
     return CharacterModel(
-      id: json['id'],
-      name: json['name'],
-      status: json['status'],
-      species: json['species'],
-      image: json['image'], gender: json['gender'], location: json['location']['name'],
+      id: json["id"],
+      name: json["name"],
+      status: json["status"],
+      species: json["species"],
+      image: json["image"],
+      gender: json["gender"],
+      location: json["location"],
+      origin: json["origin"],
+      episode: (json["episode"] as List<dynamic>?)
+          ?.map((e) => _extractEpisodeNumber(e.toString()))
+          .toList(),
+
     );
   }
 
@@ -30,6 +39,13 @@ class CharacterModel extends Character {
       "image": image,
       "gender": gender,
       "location": location,
+      "origin": origin,
+      "episode": episode ?? [],
     };
   }
+
+  static String _extractEpisodeNumber(String url) {
+    return url.split('/').last;
+  }
+
 }
