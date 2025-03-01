@@ -56,8 +56,8 @@ Si aún no lo tienes, sigue las instrucciones oficiales: [Instalar Flutter](http
 ### 2️⃣ **Clonar el repositorio**
 
 ```sh
-git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_PROYECTO>
+git clone https://github.com/guilleto/RickAndMorty-GetX.git
+cd RickAndMorty-GetX
 ```
 
 ### 3️⃣ **Instalar paquetes**
