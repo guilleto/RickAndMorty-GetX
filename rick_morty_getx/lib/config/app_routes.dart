@@ -13,7 +13,7 @@ class AppRoutes {
     GetPage(name: welcome, page: () => WelcomePage()),
     GetPage(
       name: characterList,
-      page: () => const CharacterListPage(),
+      page: () => CharacterListPage(),
       binding: CharacterBinding(),
     ),
     GetPage(name: characterInfo, page: () => const CharacterInfoPage()),

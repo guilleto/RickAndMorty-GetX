@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Character App',
-      theme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
       initialRoute: AppRoutes.welcome, // Define la pantalla de inicio
       getPages: AppRoutes.routes, // Carga las rutas definidas en app_routes.dart
     );
