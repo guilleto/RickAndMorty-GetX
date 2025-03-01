@@ -1,6 +1,6 @@
 import '../../domain/repositories/character_repository.dart';
 import '../datasources/character_data_source.dart';
-import '../../domain/entities/character.dart';
+
 
 class CharacterRepositoryImpl implements CharacterRepository {
   final CharacterRemoteDataSource remoteDataSource;
@@ -8,7 +8,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
   CharacterRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<List<Character>> getCharacters() async {
-    return await remoteDataSource.fetchCharacters();
+  Future<Map<String, dynamic>> getCharacters({int page = 1, String? name, String? status, String? gender}) async {
+    return await remoteDataSource.fetchCharacters(page: page, name: name, status: status, gender: gender);
   }
 }

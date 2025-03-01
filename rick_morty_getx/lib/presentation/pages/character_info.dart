@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../core/utils/translation_utils.dart';
 import '../../domain/entities/character.dart';
+import '../../domain/entities/translation_types.dart';
 
 class CharacterInfoPage extends StatelessWidget {
   const CharacterInfoPage({super.key});
@@ -16,8 +18,15 @@ class CharacterInfoPage extends StatelessWidget {
         children: [
           Image.network(character.image, width: 200, height: 200),
           const SizedBox(height: 20),
-          Text("Estado: ${character.status}", style: const TextStyle(fontSize: 18)),
-          Text("Especie: ${character.species}", style: const TextStyle(fontSize: 18)),
+          Text(
+              "Género: ${TranslationUtils.translate(TranslationTypes.gender, character.gender)}",
+              style: const TextStyle(fontSize: 18)),
+          Text(
+              "Estado: ${TranslationUtils.translate(TranslationTypes.status, character.status)}",
+              style: const TextStyle(fontSize: 18)),
+          Text(
+              "Especie: ${TranslationUtils.translate(TranslationTypes.species, character.species ?? 'Desconocido')}",
+              style: const TextStyle(fontSize: 18)),
         ],
       ),
     );

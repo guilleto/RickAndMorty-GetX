@@ -1,5 +1,5 @@
 import '../entities/character.dart';
 
 abstract class CharacterRepository {
-  Future<List<Character>> getCharacters();
+  Future<Map<String, dynamic>> getCharacters({int page, String? name, String? status, String? gender});
 }
