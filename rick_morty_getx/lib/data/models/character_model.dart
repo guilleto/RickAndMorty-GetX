@@ -5,8 +5,10 @@ class CharacterModel extends Character {
     required super.id,
     required super.name,
     required super.status,
-    required super.species,
     required super.image,
+    required super.gender,
+    required super.location,
+    super.species
   });
 
   factory CharacterModel.fromJson(Map<String, dynamic> json) {
@@ -15,7 +17,7 @@ class CharacterModel extends Character {
       name: json['name'],
       status: json['status'],
       species: json['species'],
-      image: json['image'],
+      image: json['image'], gender: json['gender'], location: json['location']['name'],
     );
   }
 
@@ -26,6 +28,8 @@ class CharacterModel extends Character {
       "status": status,
       "species": species,
       "image": image,
+      "gender": gender,
+      "location": location,
     };
   }
 }

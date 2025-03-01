@@ -12,7 +12,7 @@ class CharacterBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<ApiClient>(() => ApiClient());
     Get.lazyPut<CharacterRemoteDataSource>(() => CharacterRemoteDataSource(Get.find()));
-    Get.lazyPut<CharacterRepository>(() => CharacterRepositoryImpl(Get.find())); // ⚠ Aquí inyectamos el CharacterRepository
+    Get.lazyPut<CharacterRepository>(() => CharacterRepositoryImpl(Get.find()));
     Get.lazyPut<GetCharacters>(() => GetCharacters(Get.find()));
     Get.lazyPut<CharacterController>(() => CharacterController(Get.find()));
   }
